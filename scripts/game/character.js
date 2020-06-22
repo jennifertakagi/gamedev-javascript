@@ -8,47 +8,33 @@ class Character {
      * @param {string} image - the image value
      */
     constructor (image) {
-      this.image = image
-      this.characterHeight = 135
-      this.matrix = [
-        [0, 0],
-        [220, 0],
-        [440, 0],
-        [660, 0],
-        [0, 270],
-        [220, 270],
-        [440, 270],
-        [660, 270],
-        [0, 540],
-        [220, 540],
-        [440, 540],
-        [660, 540],
-        [0, 810],
-        [220, 810],
-        [440, 810],
-        [660, 810]
-      ]
-      this.currentFrame = 0
+        this.image = image
+        this.characterHeight = 135
+        this.positionCharacter = height - this.characterHeight
+        this.frameCharacterWidth = 220
+        this.frameCharacterHeight = 270
+        this.framesLength = 15
+        this.currentFrame = 0
+        this.currentPosition = 0
+        this.rowFrame = 0
     }
-  
+    
+    /**
+     * Gets the frame coordinates according to parameters
+     * @param {number} positionFrame - position frame required
+     * @param {array} frameCoordinates - list with coordinates 
+     */
+    getFrameCoordinates (positionFrame) {
+        return [(positionFrame - this.rowFrame ) * this.frameCharacterWidth, this.frameCharacterHeight * this.currentPosition]
+    }
+
     /**
      * Shows the character
      */
     show () {
-        const xCoordinate = this.matrix[this.currentFrame][0]
-        const yCoordinate = this.matrix[this.currentFrame][1]
+        const frameCoordinates = this.getFrameCoordinates(this.currentFrame)
 
-        image(
-            this.image, 
-            0, 
-            height - this.characterHeight, 
-            110, 
-            this.characterHeight, 
-            xCoordinate, 
-            yCoordinate, 
-            220, 
-            270
-        )
+        image(this.image, 0, this.positionCharacter, 110, this.characterHeight, frameCoordinates[0], frameCoordinates[1], 220, 270)
 
         this.animate()
     }
@@ -59,8 +45,15 @@ class Character {
     animate () {
         this.currentFrame++
 
-        if (this.currentFrame >= this.matrix.length -1) {
+        if (this.currentFrame % 4 === 0) {
+            this.rowFrame = this.currentFrame 
+            this.currentPosition++
+        }
+
+        if (this.currentFrame >= this.framesLength) {
             this.currentFrame = 0
+            this.currentPosition = 0
+            this.rowFrame = 0
         }
     }
 }
