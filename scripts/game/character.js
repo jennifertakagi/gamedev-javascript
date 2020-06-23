@@ -5,27 +5,38 @@ class Character {
 
     /**
      * Creates a character
-     * @param {string} image - the image value
+     * @param {string} image - the character's image
+     * @param {number} characterWidth - the character's width
+     * @param {number} characterHeight - the character's height
+     * @param {number} x - the character's position on x
+     * @param {number} widthSprite - the sprite's width
+     * @param {number} heightSprite - the sprite's height
+     * @param {number} spritePerRow - the sprites per row
+     * @param {number} spriteLength - the sprite's length (total sprite)
      */
-    constructor (image) {
+    constructor (image, characterWidth, characterHeight, x, widthSprite, heightSprite, spritePerRow, spriteLength) {
         this.image = image
-        this.characterHeight = 135
-        this.positionCharacter = height - this.characterHeight
-        this.frameCharacterWidth = 220
-        this.frameCharacterHeight = 270
-        this.framesLength = 15
+        this.characterWidth = characterWidth
+        this.characterHeight = characterHeight
+        this.x = x
+        this.y = height - this.characterHeight
+        this.widthSprite = widthSprite
+        this.heightSprite = heightSprite
+        this.spritePerRow = spritePerRow
+        this.spriteLength = spriteLength
+
         this.currentFrame = 0
-        this.currentPosition = 0
+        this.currentRowPosition = 0
         this.rowFrame = 0
     }
-    
+
     /**
      * Gets the frame coordinates according to parameters
      * @param {number} positionFrame - position frame required
-     * @param {array} frameCoordinates - list with coordinates 
+     * @returns {array} frameCoordinates - list with coordinates 
      */
     getFrameCoordinates (positionFrame) {
-        return [(positionFrame - this.rowFrame ) * this.frameCharacterWidth, this.frameCharacterHeight * this.currentPosition]
+        return [(positionFrame - this.rowFrame ) * this.widthSprite, this.heightSprite * this.currentRowPosition]
     }
 
     /**
@@ -34,7 +45,8 @@ class Character {
     show () {
         const frameCoordinates = this.getFrameCoordinates(this.currentFrame)
 
-        image(this.image, 0, this.positionCharacter, 110, this.characterHeight, frameCoordinates[0], frameCoordinates[1], 220, 270)
+        image(this.image, this.x, this.y, this.characterWidth, this.characterHeight,
+            frameCoordinates[0], frameCoordinates[1], this.widthSprite, this.heightSprite)
 
         this.animate()
     }
@@ -45,14 +57,14 @@ class Character {
     animate () {
         this.currentFrame++
 
-        if (this.currentFrame % 4 === 0) {
+        if (this.currentFrame % this.spritePerRow === 0) {
             this.rowFrame = this.currentFrame 
-            this.currentPosition++
+            this.currentRowPosition++
         }
 
-        if (this.currentFrame >= this.framesLength) {
+        if (this.currentFrame >= this.spriteLength) {
             this.currentFrame = 0
-            this.currentPosition = 0
+            this.currentRowPosition = 0
             this.rowFrame = 0
         }
     }
