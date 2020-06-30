@@ -14,10 +14,11 @@ class Hero extends Character {
      * @param {number} spritePerRow - the sprites per row
      * @param {number} spriteLength - the sprite's length (total sprite)
      */
-    constructor (image, characterWidth, characterHeight, x, widthSprite, heightSprite, spritePerRow, spriteLength) {
-        super(image, characterWidth, characterHeight, x, widthSprite, heightSprite, spritePerRow, spriteLength)
+    constructor (image, characterWidth, characterHeight, x, variationY, widthSprite, heightSprite, spritePerRow, spriteLength) {
+        super(image, characterWidth, characterHeight, x, variationY, widthSprite, heightSprite, spritePerRow, spriteLength)
         
-        this.yInitial = height - characterHeight
+        this.variationY = variationY
+        this.yInitial = height - characterHeight - variationY
         this.y = this.yInitial
         this.numberJump = 0
         this.limitJumps = 2
@@ -52,7 +53,7 @@ class Hero extends Character {
      * Verifies if hero is clashing with enemy
      * @returns {boolean} is clashing
      */
-    isClashing () {
+    isClashing (enemy) {
         const accurancy = 0.7
 
         return collideRectRect(

@@ -1,6 +1,8 @@
-let scenarioImage, heroImage, enemyImage, gameOverImage
-let scenario, hero, enemy
+let scenarioImage, heroImage, dropletImage, trollImage, flyerDropletImage, gameOverImage
+let scenario, hero
 let gameSound, jumpSound, gameOverSound
+
+const enemies = []
 
 /**
  * Function is used to handle asynchronous loading of
@@ -9,7 +11,9 @@ let gameSound, jumpSound, gameOverSound
 function preload () {
   scenarioImage  = loadImage('images/scenario/florest.png')
   heroImage = loadImage('images/hero/running.png')
-  enemyImage = loadImage('images/enemies/droplet.png')
+  dropletImage = loadImage('images/enemies/droplet.png')
+  trollImage = loadImage('images/enemies/troll.png')
+  flyerDropletImage = loadImage('images/enemies/flyer_droplet.png')
   gameOverImage = loadImage('images/assets/game-over.png')
 
   gameSound = loadSound('sounds/soundtrack.mp3')
@@ -24,8 +28,12 @@ function setup () {
   createCanvas(windowWidth, windowHeight)
 
   scenario = new Scenario(scenarioImage, 3)
-  hero = new Hero(heroImage, 110, 135, 0, 220, 270, 4, 15)
-  enemy = new Enemy(enemyImage, 52, 52, width - 50, 104, 100, 4, 27)
+  hero = new Hero(heroImage, 110, 135, 0, 30, 220, 270, 4, 15)
+  const droplet = new Enemy(dropletImage, 52, 52, width - 50, 30, 104, 100, 10, 200, 4, 27)
+  const troll = new Enemy(trollImage, 200, 200, width * 2, 0, 400, 400, 10, 2000, 5, 28)
+  const flyerDroplet = new Enemy(flyerDropletImage, 200, 150, width - 52, 200, 200, 150, 10, 2500, 3, 15)
+
+  enemies.push(droplet, troll, flyerDroplet)
 
   frameRate(40)
 
@@ -53,10 +61,13 @@ function draw () {
   hero.show()
   hero.applyGravity()
 
-  enemy.show()
-  enemy.move()
+  enemies.forEach(enemy => {
+    enemy.show()
+    enemy.move()
 
-  hero.isClashing(enemy) ? actionsGameOver() : false
+    hero.isClashing(enemy) ? actionsGameOver() : false
+
+  })
 }
 
 /**

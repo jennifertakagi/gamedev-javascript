@@ -14,12 +14,13 @@ class Character {
      * @param {number} spritePerRow - the sprites per row
      * @param {number} spriteLength - the sprite's length (total sprite)
      */
-    constructor (image, characterWidth, characterHeight, x, widthSprite, heightSprite, spritePerRow, spriteLength) {
+    constructor (image, characterWidth, characterHeight, x, variationY, widthSprite, heightSprite, spritePerRow, spriteLength) {
         this.image = image
         this.characterWidth = characterWidth
         this.characterHeight = characterHeight
         this.x = x
-        this.y = height - this.characterHeight
+        this.variationY = variationY
+        this.y = height - this.characterHeight - this.variationY
         this.widthSprite = widthSprite
         this.heightSprite = heightSprite
         this.spritePerRow = spritePerRow
