@@ -23,7 +23,8 @@ class Hero extends Character {
         this.numberJump = 0
         this.limitJumps = 2
         this.jumpSpeed = 0
-        this.gravity = 3
+        this.gravity = 6
+        this.heightJump = -50
     }
 
     /**
@@ -31,7 +32,7 @@ class Hero extends Character {
      */
     jump () {
         if (this.numberJump < this.limitJumps) {
-            this.jumpSpeed = -30
+            this.jumpSpeed = this.heightJump
             this.numberJump++
         }
     }
