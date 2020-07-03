@@ -22,7 +22,6 @@ class ManagerButton {
      */
     draw () {
         this.button.position(this.x, this.y)
-        this.button.textCenter('horizontal')
     }
 
     /**
