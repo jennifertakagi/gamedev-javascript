@@ -1,13 +1,28 @@
-let game, gameScreens, managerButton, initialScreen
+let game
+let gameConfiguration
+let gameScreens
+let managerButton
+let initialScreen
 let actualScreen = 'initialScreen'
-let initialScreenImage, scenarioImage, heroImage, dropletImage, trollImage, flyerDropletImage, gameOverImage
-let gameSound, jumpSound, gameOverSound
+let initialScreenImage
+let lifeImage
+let scenarioImage
+let heroImage
+let dropletImage
+let trollImage
+let flyerDropletImage
+let gameOverImage
+let gameSound
+let jumpSound
+let gameOverSound
 
 const enemies = []
 
 const gameAssets = {
+  gameConfiguration: 'game-configs.json',
   gameFont: 'assets/general/game-font.otf',
   initialScreenImage: 'assets/general/initial-screen.png',
+  lifeImage: 'assets/general/life-heart.png',
   scenarioImage: 'assets/scenario/florest.png',
   heroImage: 'assets/hero/running.png',
   dropletImage: 'assets/enemies/droplet.png',

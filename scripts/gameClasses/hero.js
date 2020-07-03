@@ -25,6 +25,7 @@ class Hero extends Character {
         this.jumpSpeed = 0
         this.gravity = 6
         this.heightJump = -50
+        this.invencible = false
     }
 
     /**
@@ -51,10 +52,25 @@ class Hero extends Character {
     }
 
     /**
+     * Verifies if hero is invencible
+     */
+    becameInvencible () {
+        this.invencible = true
+
+        setTimeout(() => {
+            this.invencible = false
+        }, 1000)
+    }
+
+    /**
      * Verifies if hero is clashing with enemy
      * @returns {boolean} is clashing
      */
     isClashing (enemy) {
+        if (this.invencible) {
+            return
+        }
+
         const accurancy = 0.7
 
         return collideRectRect(

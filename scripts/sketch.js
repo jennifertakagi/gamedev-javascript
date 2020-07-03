@@ -35,9 +35,15 @@ function draw () {
 
 /**
  * Function with actions when game is over
+ * @params {Object} that
  */
-function actionsGameOver () {
-  noLoop()
-  image(gameOverImage, width / 2 - 200, height / 3, 400, 100)
-  gameOverSound.play()
+function actionsGameOver (that) {
+  that.life.loseLife()
+  that.hero.becameInvencible()
+
+  if (that.life.lifes <= 0) {
+    image(gameOverImage, width / 2 - 200, height / 3, 400, 100)
+    gameOverSound.play()
+    noLoop()
+  }
 }

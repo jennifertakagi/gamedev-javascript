@@ -14,18 +14,25 @@ class Enemy extends Character {
      * @param {number} spritePerRow - the sprites per row
      * @param {number} spriteLength - the sprite's length (total sprite)
      */
-    constructor (image, characterWidth, characterHeight, x, variationY, widthSprite, heightSprite, speed, delay, spritePerRow, spriteLength) {
+    constructor (image, characterWidth, characterHeight, x, variationY, widthSprite, heightSprite, speed, spritePerRow, spriteLength) {
         super(image, characterWidth, characterHeight, x, variationY, widthSprite, heightSprite, spritePerRow, spriteLength)
 
         this.speed = speed
-        this.delay = delay
-        this.x = width + this.delay
+        this.x = width
+        
     }
 
     /**
      * Moves the enemy
      */
     move () {
-        this.x = this.x < -this.characterWidth - this.delay ? width : this.x - this.speed
+        this.x = this.x - this.speed
+    }
+
+    /**
+     * Appears the enemy
+     */
+    appear () {
+        this.x = width
     }
 }
