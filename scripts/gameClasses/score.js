@@ -11,7 +11,7 @@ class Score {
     }
 
     /**
-     * Show the score
+     * Shows the score
      */
     show () {
         textAlign('right')
@@ -21,7 +21,7 @@ class Score {
     }
 
     /**
-     * Add the score
+     * Adds the score
      */
     addScore () {
         this.numberScore = this.numberScore + 0.1
