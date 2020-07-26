@@ -1,7 +1,7 @@
 # Hipsta Game - P5 JS
 
 This is an endeless game developed with Alura using Javascript.
-You can play it on: https://jennifertakagi.github.io/gamedev-javascript/
+You can play it on: https://jennifertakagi.github.io/hipsta-game-js/
 
 ## Getting Started
 
