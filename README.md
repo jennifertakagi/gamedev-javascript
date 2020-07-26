@@ -1,8 +1,16 @@
-# gamedev-javascript
+# Hipsta Game - P5 JS
 
-This is a serie of challenges with Alura about develop a endeless game using only Javascript, and p5 library.
+This is an endeless game developed with Alura using Javascript.
+You can play it on: https://jennifertakagi.github.io/gamedev-javascript/
 
-## Available online
+## Getting Started
 
-- Game with code: https://editor.p5js.org/jennifertakagi/sketches/7DtVPShaR
-- Game: https://jennifertakagi.github.io/gamedev-javascript/
+Clone the project and the magic will happen!
+
+## Built With
+
+* [P5](https://p5js.org/reference/) - The game library used
+
+## Authors
+
+* **Jennifer Takagi** - *Initial work*
