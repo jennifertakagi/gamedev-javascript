@@ -1,5 +1,5 @@
 <p align="left">
-   <img src="docs/logo.svg" width="150"/>
+   <img src="docs/logo.jpeg" width="150"/>
 </p>
 
 # Hipsta Game
