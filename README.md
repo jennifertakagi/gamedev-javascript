@@ -70,6 +70,6 @@ Check out the [contributing](https://github.com/jennifertakagi/hipsta-game-js/bl
 
 # :closed_book: License
 
-Released in 2020 (Work in progress).
+Released in 2020.
 This project is under the [MIT license](https://github.com/jennifertakagi/hipsta-game-js/master/LICENSE).
 
